@@ -14,20 +14,21 @@ public class HelloController {
     @GetMapping("hello")
     public String hello(Model model){
         model.addAttribute("data", "hello!!");
-       // "hello"를 뷰 리졸버 라고 한다.
-        // resources/templates/뷰 리졸버.html를 찾아가서 렌더링 시 (Thymeleaf 템플릿 엔진 처리)
+        // "hello"를 return 하면 뷰 리졸버(viewResolver)가 뷰 이름이 hello 인 것을 찾는다.
+        // resources/templates/뷰name.html를 찾아가서 렌더링 시 (Thymeleaf 템플릿 엔진 처리)
         return "hello";
     }
 
     @GetMapping("hello-mvc")
-    // @RequestParam에 required 속성이 있음 default가 true고 false로 주면 파라미터 값을 입력하지 않아도
+    // @RequestParam에 required 속성이 있음. default가 true고 false로 주면 파라미터 값을 입력하지 않아도 됨.
+    // http://localhost:8080/hello-mvc?name=name값 형식으로 변수 값을 받을 수 있음(get 방식)
     public String helloMvc(@RequestParam(value = "name",required = false) String name, Model model){
         model.addAttribute("name", name);
         return "hello-template";
     }
 
     @GetMapping("hello-string")
-    // http의 응답 body부에 return 값을 직접 넣어주겠다는 의미
+    // ResponseBody는 http의 응답 body부에 return 값을 직접 넣어주겠다는 의미
     // html 코드 없이 data 그대로 내려줌
     // ResponseBody가 없으면 위에 처럼 viewResolver가 동작해서 맞는 template을 찾게 함.
     @ResponseBody
@@ -41,7 +42,7 @@ public class HelloController {
         Hello hello = new Hello();
         hello.setName(name);
         // HttpMessageConverter가 동작함.
-        // String이면 StringConverter, 객체면 JsonConverter 동작
+        // String이면 StringConverter, 객체면 JsonConverter 동작. 객체를 json 형태로 바꿔 출력해줌.
         // 객체면 {"키":"값"} 이런 형태로 출력됨. json 형태
         return hello;
     }
