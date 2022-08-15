@@ -3,13 +3,17 @@ spring 공부
 
 -------------
 
-### 1. hello-spring
+### 1. 스프링입문
 
-spring 입문
+	- [x] 스프링 입문 - 코드로 배는 스링 부, 웹 MVC, DB 접근 기술 (완료)
+	https://www.inflearn.com/course/스프링-입문-스프링부트/dashboard
 
-    * 프로젝트 생성
-    * View 환경설정
-    * 빌드와 실행
-    * 정적 컨텐츠
-    * MVC와 템플릿 엔진
-    * API
+	* Spring Boot
+	* Web MVC
+	* JDBC
+	* test code
+	* Spring JdbcTemplate
+	* JPA
+	* Spring data JPA
+	* AOP
+
